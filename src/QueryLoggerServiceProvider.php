@@ -11,6 +11,10 @@ use Illuminate\Support\ServiceProvider;
 
 class QueryLoggerServiceProvider extends ServiceProvider
 {
+    public const MYSQL = 'mysql';
+    public const SQLITE = 'sqlite';
+    public const MONGODB = 'mongodb';
+
     /**
      * Bootstrap services.
      *
@@ -38,19 +42,16 @@ class QueryLoggerServiceProvider extends ServiceProvider
      */
     protected function listenQueryLogging(LogManager $logger)
     {
-        // Enable query logging for all connection
-        foreach (array_keys(config('database.connections')) as $connection) {
-            app('db')->connection($connection)->enableQueryLog();
-        }
+        app('db')->connection()->enableQueryLog();
 
         app('db')->listen(function (QueryExecuted $query) use ($logger) {
             $driver = $query->connection->getDriverName();
 
-            if (in_array($driver, ['mysql', 'sqlite'])) {
+            if (in_array($driver, [static::SQLITE, static::MYSQL])) {
                 $this->writeMySqlLog($query, $logger);
             }
 
-            if ($driver === 'mongodb') {
+            if ($driver === static::MONGODB) {
                 $this->writeMongoDbLog($query, $logger);
             }
         });
