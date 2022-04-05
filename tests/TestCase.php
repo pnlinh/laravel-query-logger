@@ -24,9 +24,9 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         config()->set('database.default', 'sqlite');
         config()->set('database.connections.sqlite', [
-            'driver' => 'sqlite',
+            'driver'   => 'sqlite',
             'database' => ':memory:',
-            'prefix' => '',
+            'prefix'   => '',
         ]);
         config()->set('app.debug', true);
         config()->set('app.logging.default', 'single');
