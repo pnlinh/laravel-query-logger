@@ -19,6 +19,7 @@ class QueryLoggerServiceProvider extends ServiceProvider
      * Bootstrap services.
      *
      * @param Request $request
+     *
      * @return void
      */
     public function boot(Request $request)
@@ -29,14 +30,14 @@ class QueryLoggerServiceProvider extends ServiceProvider
 
         $logger = app('log');
 
-        $logger->info("STARTING REQUEST");
+        $logger->info('STARTING REQUEST');
         $logger->info(sprintf('[%s] -> %s', $request->method(), $request->path()));
 
         $this->listenQueryLogging($logger);
     }
 
     /**
-     * Listen connection event
+     * Listen connection event.
      *
      * @param LogManager $logger
      */
@@ -58,10 +59,10 @@ class QueryLoggerServiceProvider extends ServiceProvider
     }
 
     /**
-     * Write mysql log
+     * Write mysql log.
      *
      * @param QueryExecuted $query
-     * @param LogManager $logger
+     * @param LogManager    $logger
      */
     protected function writeMySqlLog(QueryExecuted $query, LogManager $logger)
     {
@@ -80,16 +81,16 @@ class QueryLoggerServiceProvider extends ServiceProvider
             '[SQL]',
             sprintf('[%s]', strtoupper($query->connectionName)),
             sprintf('[%s ms]', str_pad($query->time, 4, 0)),
-            $sql
+            $sql,
         ];
         $logger->info(implode(' ', $messages));
     }
 
     /**
-     * Write mongodb log
+     * Write mongodb log.
      *
      * @param QueryExecuted $query
-     * @param LogManager $logger
+     * @param LogManager    $logger
      */
     protected function writeMongoDbLog(QueryExecuted $query, LogManager $logger)
     {
@@ -97,7 +98,7 @@ class QueryLoggerServiceProvider extends ServiceProvider
             '[MONGODB]',
             sprintf('[%s]', strtoupper($query->connectionName)),
             sprintf('[%s ms]', str_pad($query->time, 4, 0)),
-            $query->sql
+            $query->sql,
         ];
         $logger->info(implode(' ', $messages));
     }
