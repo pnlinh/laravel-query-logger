@@ -30,8 +30,8 @@ jobs:
           name: Install project dependencies
           command: php composer.phar install
       - run:
-          name: Run CS tests
-          command: vendor/bin/phpcs
+          name: Run CS Fixer
+          command: vendor/bin/php-cs-fixer fix
       - run:
           name: Run Unit tests
           command: vendor/bin/phpunit
