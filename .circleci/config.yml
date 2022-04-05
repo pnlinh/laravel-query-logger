@@ -34,4 +34,4 @@ jobs:
           command: vendor/bin/php-cs-fixer fix
       - run:
           name: Run Unit tests
-          command: ./vendor/bin/phpunit
+          command: vendor/bin/phpunit tests/Feature
