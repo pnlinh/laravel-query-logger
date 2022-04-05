@@ -1,4 +1,4 @@
-# Enable/disable query logger in Laravel
+# Enable/disable query logger in Laravel/Lumen
 [![StyleCI](https://github.styleci.io/repos/155349271/shield?branch=master)](https://github.styleci.io/repos/155349271)
 
 ## Requirements
