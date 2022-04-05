@@ -1,5 +1,6 @@
 # Enable/disable query logger in Laravel/Lumen
-[![StyleCI](https://github.styleci.io/repos/155349271/shield?branch=master)](https://github.styleci.io/repos/155349271)
+[![StyleCI](https://github.styleci.io/repos/477752604/shield?branch=master)](https://github.styleci.io/repos/477752604?branch=master)
+[![CircleCI](https://circleci.com/gh/pnlinh/laravel-query-logger/tree/master.svg?style=svg)](https://circleci.com/gh/pnlinh/laravel-query-logger/tree/master)
 
 ## Requirements
 
