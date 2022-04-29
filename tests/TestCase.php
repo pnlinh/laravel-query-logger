@@ -22,18 +22,20 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
     public function getEnvironmentSetUp($app)
     {
-        config()->set('database.default', 'sqlite');
-        config()->set('database.connections.sqlite', [
+        $app['config']->set('database.default', 'sqlite');
+        $app['config']->set('database.connections.sqlite', [
             'driver'   => 'sqlite',
             'database' => ':memory:',
             'prefix'   => '',
         ]);
-        config()->set('app.debug', true);
-        config()->set('app.logging.default', 'single');
+        $app['config']->set('app.debug', true);
+        $app['config']->set('app.logging.default', 'single');
 
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email')->nullable();
+            $table->string('email')->unique();
+            $table->string('phone')->nullable();
+            $table->timestamps();
         });
     }
 }
