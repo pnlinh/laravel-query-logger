@@ -72,10 +72,12 @@ class QueryLoggerServiceProvider extends ServiceProvider
             }
         }
 
+        $tempStr = sprintf('@%s@', date('Y'));
+
         $sql = $query->sql;
-        $sql = str_replace(['%', '?'], ['**', '"%s"'], $sql);
+        $sql = str_replace(['%', '?'], [$tempStr, '"%s"'], $sql);
         $sql = vsprintf(str_replace('?', '"%s"', $sql), $query->bindings);
-        $sql = str_replace('**', '%', $sql);
+        $sql = str_replace($tempStr, '%', $sql);
 
         $messages = [
             '[SQL]',

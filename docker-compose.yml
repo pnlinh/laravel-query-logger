@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  app:
+    image: shinsenter/laravel:php8.0
+    volumes:
+      - ./:/var/www/html
+    networks:
+      - localnet

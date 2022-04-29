@@ -18,13 +18,27 @@ class QueryLoggerServiceProviderTest extends TestCase
     /** @test */
     public function it_can_be_write_log()
     {
-        User::create(['email' => 'foo@bar.com']);
+        User::query()->create(['email' => 'foo@bar.com']);
 
         $path = storage_path('logs/laravel.log');
         $logContent = file_get_contents($path);
 
         $this->assertFileExists($path);
         $this->assertNotEmpty($logContent);
+    }
+
+    /** @test */
+    public function it_must_match_origin_query()
+    {
+        $phone = '60********85';
+
+        User::query()->where('phone', $phone)->first();
+
+        $path = storage_path('logs/laravel.log');
+        $logContent = file_get_contents($path);
+
+        $this->assertNotEmpty($logContent);
+        $this->assertStringContainsString($phone, $logContent);
     }
 }
 
@@ -37,5 +51,5 @@ class User extends Model
     public $timestamps = false;
 
     /** @var string[] */
-    protected $fillable = ['email'];
+    protected $fillable = ['email', 'phone'];
 }
