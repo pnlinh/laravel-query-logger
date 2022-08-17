@@ -38,8 +38,16 @@ QUERY_LOGGER_ENABLED=false
 
 ## Test
 
+- Without Docker
+
 ```bash
 composer test
+```
+
+- With Docker
+
+```bash
+make test
 ```
 
 ## Credits
