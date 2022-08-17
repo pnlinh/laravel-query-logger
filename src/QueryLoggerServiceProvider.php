@@ -21,10 +21,17 @@ class QueryLoggerServiceProvider extends ServiceProvider
      * @param Request $request
      *
      * @return void
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function boot(Request $request)
     {
-        if (!config('app.debug')) {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../config/query-logger.php' => config_path('query-logger.php'),
+            ], 'query-logger');
+        }
+
+        if (!config('query-logger.enabled')) {
             return;
         }
 
