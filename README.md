@@ -12,7 +12,7 @@
 Require this package with composer.
 
 ```bash
-composer require pnlinh/laravel-query-logger
+composer require pnlinh/laravel-query-logger --dev
 ```
 
 ## Usage
