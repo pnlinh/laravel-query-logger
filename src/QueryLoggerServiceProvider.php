@@ -20,8 +20,9 @@ class QueryLoggerServiceProvider extends ServiceProvider
      *
      * @param Request $request
      *
-     * @return void
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     *
+     * @return void
      */
     public function boot(Request $request)
     {
