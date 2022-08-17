@@ -28,7 +28,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
             'database' => ':memory:',
             'prefix'   => '',
         ]);
-        $app['config']->set('app.debug', true);
+        $app['config']->set('query-logger.enabled', true);
         $app['config']->set('app.logging.default', 'single');
 
         Schema::create('users', function (Blueprint $table) {
