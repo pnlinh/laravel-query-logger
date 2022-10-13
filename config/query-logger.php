@@ -5,8 +5,8 @@ return [
      |--------------------------------------------------------------------------
      | Query Logger Settings
      |--------------------------------------------------------------------------
-     | Query logger is disabled by default. You can enable by setting enable to true.
+     | Query logger is enable by default. You can disabled by setting disabled to true.
      |
      */
-    'enabled' => env('QUERY_LOGGER_ENABLED', false),
+    'enabled' => env('QUERY_LOGGER_ENABLED', true),
 ];
