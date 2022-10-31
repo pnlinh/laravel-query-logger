@@ -2,7 +2,6 @@ help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "⚡ \033[34m%-30s\033[0m %s\n", $$1, $$2}'
 
 install: build run
-test: build run test
 
 build: ## Build Docker image for local development
 	docker-compose build
@@ -19,7 +18,7 @@ restart: ## Restart containers
 	docker-compose restart
 
 test: ### Run unit testing
-	docker-compose exec app sh -c "composer test"
+	docker-compose run --rm app sh -c "composer test"
 
 stop: ## Stop application running in Docker
 	docker-compose kill
