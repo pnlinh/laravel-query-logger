@@ -2,6 +2,7 @@
 
 [![StyleCI](https://github.styleci.io/repos/477752604/shield?branch=master)](https://github.styleci.io/repos/477752604?branch=master)
 [![CircleCI](https://circleci.com/gh/pnlinh/laravel-query-logger/tree/master.svg?style=svg)](https://circleci.com/gh/pnlinh/laravel-query-logger/tree/master)
+[![Quality Score](https://img.shields.io/scrutinizer/quality/g/pnlinh/laravel-query-logger.svg?style=flat-square)](https://scrutinizer-ci.com/g/pnlinh/laravel-query-logger/)
 
 ## Requirements
 
